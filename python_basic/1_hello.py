@@ -142,4 +142,149 @@ print(min_value)
 print(sorted_list)
 
 
-# 字典
+# 字典【键值对("key":"value")，但不能将列表作为键，元组可以作为键，数据可变】
+# 元组【值(value,value)，元组不可变】
+contract = {"a":213132213,("a","b"):325645}
+print(contract["a"])
+print(contract[("a","b")])
+print("a" in contract)
+del contract["a"]
+print(contract)
+
+books = {"读文科":"阿斯顿的机会vu",
+         "萨拉就":"法和恐惧的还是",
+         "苏坡桥":"超级卡刷卡上车",
+         "旗舰店":"来看电视剧啊离",}
+print(books)
+print(len(books))
+
+
+# for循环【for 变量名 in 可迭代对象】
+for_array = [234.3,242,233.4,544.343,234.324,21789.7,86]
+for_tuple = ("askdl","dsakl","ckldsvvv")
+for_dict = {"sdq":3212,"fsdf":95984,"vkjj":76778}
+
+for item in for_array:
+    print(item)
+
+print("--------")
+for item in for_tuple:
+    print(item)
+
+print("--------")
+for item in for_dict:
+    print(item)
+print("--------")
+for item,val in for_dict.items():
+    print(item," ",val)
+print("--------")
+for item in for_dict.items():
+    print(item[0]," ",item[1])
+
+print("--------")
+for item in range(0,5):
+    print(item)
+print("--------")
+for item in range(0,5,2):
+    print(item)
+print("")
+
+# while循环【while 条件:】
+i=0
+while i<100:
+    i += 1
+print(i)
+
+# val = ""
+# accumulate_list = []
+# accumulate_sum = 0
+#
+# while val != "quit":
+#     val = input("输入值吧: ")
+#     if val == "quit":
+#         break
+#     else:
+#         accumulate_list.append(float(val))
+#
+# for item in accumulate_list:
+#     accumulate_sum += item
+# print(accumulate_sum/len(accumulate_list))
+
+
+# 格式化字符串【format方式, f""字符串方式】
+string_content = """
+{0}年大吉，天天开心。
+快乐永存，祈福共天。
+祝{1}天天快乐，幸福永存
+""".format("虎","小明")
+
+print(string_content)
+
+string_content = """
+{animal}年大吉，天天开心。
+快乐永存，祈福共天。
+祝{name}天天快乐，幸福永存
+""".format(animal="兔",name="小吉祥")
+
+print(string_content)
+
+animal = "蛇"
+name = "小静"
+
+string_content = f"""
+{animal}年大吉，天天开心。
+快乐永存，祈福共天。
+祝{name}天天快乐，幸福永存
+"""
+
+print(string_content)
+
+
+# 函数
+def calculate_sector(central_angle, radius):
+    area =  central_angle / 360 * math.pi * radius ** 2
+    print(f"该扇形的面积为:{format(area,'.2f')}")
+
+def calculate_sector_return(central_angle, radius):
+    area =  central_angle / 360 * math.pi * radius ** 2
+    print(f"该扇形的面积为:{format(area,'.2f')}")
+    return format(area,'.2f')
+
+calculate_sector(44,2)
+calculate_sector(89,2)
+calculate_sector(77,2)
+
+def get_data():
+    data = 1
+    while data <10:
+        data += 1
+    return data
+
+def get_data_none():
+    data = 1
+    while data <10:
+        data += 1
+
+print(get_data())
+print(get_data_none())
+
+def BMI_calculate(weight, height):
+    result = weight / (height * height)
+    if result <= 18.5:
+        print("偏瘦啦")
+    elif result <= 25:
+        print("很正常")
+    elif result <= 30:
+        print("偏胖")
+    else:
+        print("肥胖")
+
+    return format(result,'.2f')
+
+print(BMI_calculate(37,1.74))
+print(BMI_calculate(68,1.75))
+print(BMI_calculate(90,1.78))
+print(BMI_calculate(190,1.74))
+
+
+# 引入模块
