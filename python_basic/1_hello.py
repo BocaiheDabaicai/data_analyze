@@ -287,4 +287,11 @@ print(BMI_calculate(90,1.78))
 print(BMI_calculate(190,1.74))
 
 
-# 引入模块
+# 引入模块【使用轮子，3//2 => 1(向下取整)】
+"""
+import statistics // 语句一，声明引入模块
+from statistics import mean, median, stdev // 语句二，引入部分语句
+from statistics import * // 语句三，引入所有语句
+
+pip install statistics // 安装第三方库，参考网站 pypi.org
+"""
