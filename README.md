@@ -39,3 +39,5 @@ $\sqrt[3]xy^2$
 $\frac{x+y}{x-y}$
 
 - NumPy【科学和工程领域】，数据处理效率极高
+
+- Pandas【构建在NumPy的基础之上】，更加完善
