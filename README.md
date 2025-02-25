@@ -81,5 +81,11 @@ $\frac{x+y}{x-y}$
 - 数据清洗的流程
   
   - 规范结构，每列的数据规范、每行的数据规范、每个单元格规范
+  - 清理索引和列名，`.rename(index={},columns={},inplace=True)`，排序`.sort_index(inplace=True)`
+  - 清理混乱数据，`.str.split("/",expand=True)`
+  - 清理脏数据，`.fillna(0) .dropna(subset="工资") .drop_duplicates(keep="last") astype("int" "str" "float" "bool")`
+  - 保存干净数据，`.to_csv("路径",set_index=False)`
 
-61
+
+
+66
