@@ -85,7 +85,9 @@ $\frac{x+y}{x-y}$
   - 清理混乱数据，`.str.split("/",expand=True)`
   - 清理脏数据，`.fillna(0) .dropna(subset="工资") .drop_duplicates(keep="last") astype("int" "str" "float" "bool")`
   - 保存干净数据，`.to_csv("路径",set_index=False)`
+  
+  > 67 比较重要后期要补看
 
+## 数据整理
 
-
-66
+- 合并数据【05：04】
