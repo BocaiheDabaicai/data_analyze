@@ -77,7 +77,72 @@ print(np.log(a13))
 # 数组完成矩阵乘法
 print(np.dot(a13,a14))
 
-# 比较
+# 比较相等、大于小于
+print(a13 == a12)
+print(np.array_equal(a13, a14))
+print(a13 < 2)
+
+# 聚合函数【矩阵求和、矩阵最小值、矩阵最大值（行方向上）、累计和（列方向上）、平均值、标准差】
+print(a14.sum())
+print(a14.min())
+print(a14.max(axis=0))
+print(a14.cumsum(axis=1))
+print(a14.mean())
+print(np.std(a14))
+
+# 复制矩阵【创建视图、复制矩阵】
+print(a14.view())
+print(a14.copy())
+
+# 排序矩阵
+a15 = np.array([2,34,5,78,9,1])
+a15.sort()
+print(a15)
+
+# 选取值
+print(a14[1,2])
+print(a15[2])
+# 切片【一维切片、二维切片（0到2行的第1列）、二维切片（直到第2行）、二维切片（第1行）】
+print(a15[0:2])
+print(a14[0:2,1])
+print(a14[:2])
+print(a14[1,...])
+# 布尔判断
+print(a15[a15>10])
+
+# 矩阵转置
+print(a14)
+print(a14.T)
+print(np.transpose(a14))
+
+# 多维数组转换为一维数组
+print(a14.ravel())
+# 重塑维度
+print(a15.reshape(2,-1))
+
+# 重塑、添加、删除元素【需要重新赋值给原矩阵才能生效】
+print(np.resize(a15,(2,8)))
+print(np.append(a15,98))
+print(np.insert(a15,2,300))
+print(np.delete(a15,1))
+
+# 联合函数
+print(np.concatenate((a1,a15),axis=0))
+# 堆叠函数
+a16 = np.vstack((a1,np.array([6,4,2,3,1])))
+a17 = np.hstack((a1,np.array([6,4,2,3,1])))
+a18 = np.hstack((a1,np.array([6,4,2,3,1])))
+
+print(a16)
+print(a17)
+print(a18)
+
+# 分割矩阵
+print(np.hsplit(a15,2))
+print(np.vsplit(a15,2))
+
+
+
 
 # print(a1)
 # print(a2)
