@@ -65,6 +65,7 @@ cleaned_titles = cleaned_titles.dropna(subset=["imdb_score"])
 cleaned_titles.query('genres != ""')
 cleaned_titles["production_countries"] = cleaned_titles["production_countries"].replace({"Lebanon": "LB"})
 credits_with_titles = pd.merge(cleaned_credits, cleaned_titles, on="id", how="inner")
+groupby_genres_and_person_id = actor_with_titles.groupby(["genres", "person_id"])
 ```
 
 > `lambda s: eval(s)`：把字符串转换成表达式并返回
@@ -82,5 +83,19 @@ credits_with_titles = pd.merge(cleaned_credits, cleaned_titles, on="id", how="in
 > `cleaned_titles["production_countries"].replace({"Lebanon": "LB"})`：将`production_countries`列里的`Lebanon`替换为`LB`
 > 
 > `pd.merge(cleaned_credits, cleaned_titles, on="id", how="inner")`：合并`cleaned_credits`和`cleaned_titles`，以`id`作为合并键，方式是`inner`方式。【how：inner(取两个表的交集)、outer(取两个表的并集)、left(保留左表的结果)、right(保留右表的结果)】
+> 
+> `actor_with_titles.groupby(["genres", "person_id"])`：使表`actor_with_titles`按照`"genres"`, `"person_id"`进行分组，得到分组后的数据表格
 
-groupby方法
+4. 保存数据
+   
+   - 对清洗好的数据，完成分析的数据，得到结果的数据进行保存
+   
+   - 对最终结果进行保存，以方便查看，也可以不用保存（jupyter能够保存当时显示的结果）
+   
+   相关代码：
+   
+   ```python
+   cleaned_data.to_csv("e_commerce_cleaned.csv", index=False)
+   ```
+
+> `cleaned_data.to_csv("e_commerce_cleaned.csv", index=False)`：将表格`cleaned_data`保存到当前目录下，命名为`e_commerce_cleaned.csv`，不需要生成索引
