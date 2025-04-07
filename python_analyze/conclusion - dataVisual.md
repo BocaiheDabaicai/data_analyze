@@ -63,3 +63,65 @@
      - 多个数据变量的情况，那么可以在图形上绘制多种不同类型的点、线或条柱
      
      - 多个图像堆叠，也就可以明白不同数值的图像之间的差异
+
+3. 绘制图表
+   
+   - matplotlib
+     
+     - 安装指令：`pip install matplotlib`
+     
+     - 常用模块：`import matplotlib.pyplot as plt`
+   
+   - seaborn【封装版的`matplotlib`】
+     
+     - 安装指令：`pip install seaborn`
+     
+     - 常用模块：`import seaborn as sns`
+   
+   - 操作流程
+     
+     - 绘制一维图表
+       
+       - `sns.histplot(s1)`：绘制一维直方图
+       
+       - `sns.kdeplot(s1)`：绘制一维密度图
+       
+       - `sns.boxplot(s1)`：绘制一维箱型图
+       
+       - `sns.violinplot(s1)`：绘制小提琴图
+       
+       - `sns.histplot(df1,x="bill_length_mm")`：绘制一维直方图，`dataframe`传入，并选择其中一列进行绘制
+     
+     - 绘制二维图表
+       
+       - `sns.scatterplot(df1,x="total_bill",y="tip")`：绘制二维散点图，x轴为总账单，y轴为小费，分析总账单与小费之间的关系
+       
+       - `sns.scatterplot(x=df1["total_bill"],y=df1["tip"])`：绘制二维散点图，第二种绘制散点图的方式
+       
+       - `sns.lineplot(df2,x="year",y="passengers")`：绘制二维折线图
+       
+       - `sns.barplot(df2,x="year",y="passengers",estimator=np.mean)`：绘制二维条形图，默认展示平均值
+       
+       - `sns.countplot(df3,x="species")`：绘制计数图
+       
+       - `plt.pie(df4["vote"],labels=df4["fruit"],autopct="%.1f%%")`：绘制饼图，标签为水果列，显示数据到小数位第一位
+     
+     - 展示图表【`jupyter`里不需要这一步】
+       
+       - `plt.show()`
+     
+     - 添加副内容【这些方法都需要在`splt.show()`方法之前运行】
+       
+       - `plt.title("Adelie...")`：为图表添加标题，标题内容为：...
+       
+       - `plt.xlabel("单位:mm")`：为图表添加x轴的标签
+       
+       - `plt.ylabel("样本数量")`：为图表添加y轴的标签
+     
+     - 修改数据的表示【用在绘制方法中】
+       
+       - `color="red"`：把数据的表示颜色修改为红色【hex格式也支持】
+       
+       - `sns.set_palette("pastel")`：把数据的表示色盘修改为粉笔色，其它的色系还有`crest`等等
+
+79
