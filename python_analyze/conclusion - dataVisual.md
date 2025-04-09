@@ -106,6 +106,54 @@
        
        - `plt.pie(df4["vote"],labels=df4["fruit"],autopct="%.1f%%")`：绘制饼图，标签为水果列，显示数据到小数位第一位
      
+     - 绘制多个变量数据
+       
+       - `sns.scatterplot(iris,x="length",y="width",hue="species")`：绘制二维散点图，x轴为长度，y轴为宽度，以`species`进行分类
+       
+       - `sns.scatterplot(iris,x="length",y="width",hue="species", size="petal_length")`：绘制二维散点图，x轴为长度，y轴为宽度，以`species`进行类型分类，以`petal_length`进行点大小分类
+       
+       - `sns.heatmap(glue,annot=True)`：绘制热力图，并且每个小方块上显示数据数字，默认情况下`annot=False`
+       
+       - 显示聚合图表【适用于一维图表的聚合显示】，代码示例如下：
+         
+         ```python
+         sns.histplot(s1,binwidth=0.1,label="test1")
+         sns.histplot(s2,binwidth=0.1,label="test2")
+         sns.histplot(s3,binwidth=0.1,label="test3")
+         plt.legend()
+         plt.show()
+         ```
+         
+         在一张图表上，显示`s1`,`s2`,`s3`三张图表的聚合情况，每个条柱的宽度为0.1，每个条柱设置自己的标签，同时在图表内显示图例。
+       
+       - `sns.boxplot(s1,y="length",x="species")`：绘制箱型图，y轴表示长度，x轴用`species`进行分类
+       
+       - `plt.subplots(1,3)`：绘制一张表示一行三列的图表
+       
+       - `plt.subplots(1,3,figsize=(15,5))`：绘制一张表示一行三列的图表，为每个子图绘制大小，总图表大小为15，每个子图的大小为5
+       
+       - 显示多个子图【`plt.subplots`】，代码示例如下：
+         
+         ```python
+         fig,axes = plt.subplots(1,3,figsize=(15,5))
+         sns.boxplot(data=iris,y="length",x="species",ax=axes[0])
+         sns.boxplot(data=iris,y="length",x="species",ax=axes[1])
+         sns.boxplot(data=iris,y="length",x="species",ax=axes[2])
+         plt.show()
+         ```
+         
+         `fig`：表示整个大图，`axes`：表示子图列表
+         
+         `ax=axes[0]`：绘制箱型图表到第一个子图上
+       
+       - `sns.pairplot(iris)`：绘制一组图例，把数据里每个列之间的数据进行显示，并且把每个列与其他列之间的关系也绘制成图表
+       
+       - `sns.pairplot(iris,hue="species")`：绘制一组图例，把数据里每个列之间的数据进行显示，并且把每个列与其他列之间的关系也绘制成图表，并用`species`进行数据分类
+       
+       - `sns.pairplot(iris,hue="species",kind="reg")`：绘制一组图例，把数据里每个列之间的数据进行显示，并且把每个列与其他列之间的关系也绘制成图表，并用`species`进行数据分类，同时为每个散点图绘制线性回归线，大致上表示出散点群的走向、趋势
+       
+       - `sns.pairplot(iris,hue="species",kind="reg",plot_kws={'scatter_kws'}:{"alpha":0.5})`：绘制一组图例，把数据里每个列之间的数据进行显示，并且把每个列与其他列之间的关系也绘制成图表，并用`species`进行数据分类，同时为每个散点图绘制线性回归线，大致上表示出散点群的走向、趋势，最后调整散点图散点的透明度为0.5
+     
      - 展示图表【`jupyter`里不需要这一步】
        
        - `plt.show()`
@@ -117,11 +165,41 @@
        - `plt.xlabel("单位:mm")`：为图表添加x轴的标签
        
        - `plt.ylabel("样本数量")`：为图表添加y轴的标签
+       
+       - `plt.legend(bbox_to_anchor=(1,1))`：将图表的图例显示在图表外侧右边【0,0 表示显示在图表内侧、0,1 表示显示在图表外侧左边、1,0 表示显示在图表外侧下边、1,1 表示显示在图表外侧右边】
      
      - 修改数据的表示【用在绘制方法中】
        
        - `color="red"`：把数据的表示颜色修改为红色【hex格式也支持】
        
-       - `sns.set_palette("pastel")`：把数据的表示色盘修改为粉笔色，其它的色系还有`crest`等等
+       - `sns.set_palette("pastel")`：把数据的表示色盘修改为粉笔色，其它的色系还有`crest`等等【默认色盘是`muted`】
 
-79
+4. 可视化帕默群岛企鹅数据
+   
+   - 读取数据
+   
+   - 评估数据
+   
+   - 清理数据
+   
+   - 数据探索
+     
+     - 设置色盘
+     
+     - 检查数据
+     
+     - 企鹅种类比例，对企鹅的每个种类的数量进行统计【通过种类比例，得到合理的结论】
+     
+     - 企鹅所属岛屿的比例
+     
+     - 企鹅性别比例
+     
+     - 不同岛屿上的企鹅种类数量
+     
+     - 不同岛屿上的企鹅性别数量
+     
+     - 查看数值之间的相关关系，相关关系一般使用`pairplot`
+     
+     - 根据种类查看数值之间的相关关系
+     
+     - 根据性别查看数值之间的相关关系
