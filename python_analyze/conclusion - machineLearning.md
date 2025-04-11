@@ -79,4 +79,43 @@
    
    - 提示：独立双样本z检验，可以提供更高的准确性和敏感性
 
-82
+2. 编码过程
+   
+   - 独立双样本t检验
+     
+     - 安装依赖包`pip install scipy`
+     
+     - 引入模块`from scipy.stats import ttest_ind`
+     
+     - 关键代码：
+       
+       ```python
+       t_stat, p_value = ttest_ind(height_a,height_b)
+       alpha = 0.5
+       if p_value < alpha:
+           print("两组数据无明显差异")
+       else:
+           print("两组数据有明显差异")
+       ```
+       
+       `ttest_ind(height_a,height_b)`：独立双样本t检验，适合两组样本的数据量较少的情况
+       
+       `p_value`：此处得到的P值直接与`alpha`值进行比较，即可得到推测结果`alpha`：表示预设的临界值
+   
+   - 独立双样本z检验
+     
+     - 安装依赖包`pip install statsmodels`
+     
+     - 引入模块`from statsmodels.stats.weightstats import ztest`
+     
+     - 关键代码二：
+       
+       ```python
+       z_stat, p_value = ztest(height_a,height_b,alternative='two-sided')
+       ```
+       
+       `alternative='two-sided'`：表示结果执行双尾检验，只推断两个均值之间是否存在显著差异。设置为`larger`，则表示第一个样本的均值是否显著大于第二个样本的均值；设置为`smaller`，则表示第一个样本的均值是否显著小于第二个样本的均值
+       
+       `p_value`：此处得到的P值直接与`alpha`值进行比较，即可得到推测结果`alpha`：表示预设的临界值
+
+83
