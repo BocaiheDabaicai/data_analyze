@@ -233,4 +233,54 @@
          
          - `new_observation = pd.get_dummies(new_observation,columns=['所在城市'])`：对分类属性`所在城市`进行分类处理，即扩展表格项
      
-     - 项目实战
+     - 项目实战—线性回归预测房价
+       
+       - 读取数据
+       
+       - 评估数据
+       
+       - 清理数据
+       
+       - 数据可视化探索
+       
+       - 分析数据
+         
+         - 引入模块`import statsmodels.api as sm`
+         
+         - 拷贝数据，避免直接修改原数据
+         
+         - 对数据进行分类处理，`price = pd.getdummies(price,drop_first=True,columns=['a','b',...,''],dtype=int)`
+         
+         - 获得因变量，`y = price['price']`
+         
+         - 整理出其它的自变量，`x = price.drop('price',axis=1)`
+         
+         - 观察自变量之间的相关性
+           
+           - 观察值：`x.corr()`
+           
+           - 设置判断值：`x.corr().abs() > 0.8`
+           
+           - 观察不同自变量之间是否有相关性过高的情况
+         
+         - 为自变量添加截距，`x = sm.add_constant(x)`
+         
+         - 获得回归模型方程的拟合值，`model = sm.OLS(y,x).fit()`
+         
+         - 显示拟合结果，`model.summary()`，根据拟合结果，移除P值大于0.5的属性，因为这些属性对模型的预测影响度很低
+         
+         - 移除无关的属性，`x = x.drop(['b','c','d'],axis=1)`，再重新对数据进行拟合
+       
+       - 预测数据
+         
+         - 准备预测数据，`predict_data = pd.DataFrame({'a':1,"b":"x"})`
+         
+         - 对分类数据进行分类定义，`predict_data["a"] = pd.Categorical(predict_data["a"],categories=['yes','no'])`，所有的分类变量都需要转换
+         
+         - 对分类变量引入虚拟变量，`pd.get_dummies(predict_data,drop_first=True,columns=['a','b','c'],dtype=int)`
+         
+         - 移除对预测影响不重要的属性
+         
+         - 预测可能的价格，`value = model.predict(predict_data)`
+
+88
