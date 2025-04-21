@@ -283,4 +283,52 @@
          
          - 预测可能的价格，`value = model.predict(predict_data)`
 
-88
+5. 逻辑回归
+   
+   - 意义：用于预测事件发生的概率，值的范围在0~1之间
+   
+   - 预测方法：最大似然估计
+   
+   - 过程：
+     
+     - 引入模块`import statsmodels.api as sm`
+     
+     - 将分类变量转换为虚拟变量`pd.get_dummies(data,columns=["gender","smoking"],dtype=int,drop_first=True)`
+     
+     - 手动添加系数`x = sm.ad_constant(x)`
+     
+     - 建立逻辑回归模型，并进行数据拟合`result = sm.Logit(y,x).fit()`
+     
+     - 查看输出`result.summary()`
+     
+     - 使用系数计算公式得到结果`np.exp(1.3233)`
+     
+     - 预测未知数据`result.predict(xxx)`
+   
+   - 项目—泰坦尼克号幸存者
+     
+     - 读取数据
+     
+     - 评估数据
+     
+     - 清理数据
+     
+     - 探索数据
+     
+     - 分析数据，注意：逻辑回归的时候是不允许数据出现空缺值的
+       
+       - 引入模块
+       
+       - 用复制好的数据进行分析步骤
+       
+       - 取出除`Survived`的值以外的属性作为x，并查看x的属性之间的相关性`x.corr()`，移除对模型建立没有显著作用的属性
+       
+       - 添加截距，`x = sm.add_constant(x)`
+       
+       - 创建逻辑模型并进行数据拟合，`result = sm.Logit(y,x).fit()`
+       
+       - 查看拟合结果，`result.summary()`
+       
+       - 计算自然常数的次方，`np.exp(数字)`
+     
+     - 预测数据
