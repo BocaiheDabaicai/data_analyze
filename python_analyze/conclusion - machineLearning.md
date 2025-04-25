@@ -332,3 +332,19 @@
        - 计算自然常数的次方，`np.exp(数字)`
      
      - 预测数据
+       
+       - 获得预测的回归模型，并对数据进行拟合`result = sm.Logit(y,x).fit()`
+       
+       - 显示回归模型的信息，`result.summary()`
+       
+       - 检查数据，保证数据不存在缺失值，使用平均值填充，`a['age'] = a['age'].fillna(a['age'].mean())`，检查是否还存在缺失值，`a['age'].isna().sum()`
+       
+       - 给分类变量设置分类类型，`pd.Categorical(a['class'],categories=['1','2','3'])`
+       
+       - 给分类变量引入虚拟变量，`pd.get_dummies(a,columns=['class','age'],dtype=int,drop_first=True)`
+       
+       - 查看分类变量，`model.params`
+       
+       - 模型预测，`predict_value = model.predict(x_test)`
+       
+       - 大于等于0.5则表示幸存，`predict_value > 0.5`
